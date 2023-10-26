@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div id="example-1">
     <form action="" class="search-bar">
       <input type="search" name="search" pattern=".*\S.*" required>
@@ -218,8 +218,8 @@ body {
     background: #f1f1f1;
   }
 }
-</style>
-<!-- <template>
+</style> -->
+<template>
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
@@ -258,10 +258,10 @@ export default {
     msg: String
   }
 }
-</script> -->
+</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<!-- <style scoped>
+<style scoped>
 h3 {
   margin: 40px 0 0;
 }
@@ -276,4 +276,4 @@ li {
 a {
   color: #42b983;
 }
-</style> -->
+</style>
