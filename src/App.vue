@@ -6,9 +6,20 @@
     <button @click="getData()">Meaning</button>
     <!-- <p v-if="word_noun">Part of Speech: {{ word_noun }}</p> -->
     <!-- <p v-for="( meaning, j ) in word_meaning" :key="j">Part of Speech: {{ meaning.definition }}</p> -->
-    
-    <p v-for="( speech, i ) in part_of_speech" :key="i">{{ i + 1 }}. {{ speech.partOfSpeech }}</p>
-    <p > {{ part_of_speech }}</p>
+
+    <!-- <p v-for="( speech, i ) in part_of_speech" :key="i">{{ i + 1 }}</p> -->
+    <p>{{ temp_part_of_speech }}</p>
+    <!-- <p>---------------------------</p> -->
+    <!-- <p v-for="( meaning, i ) in word_meaning" :key="i">{{ i + 1 }}</p> -->
+    <!-- <p>{{ res[0] }}</p> -->
+
+    <!-- <p v-for="( data, i ) in res" :key="i"> 
+      {{ data[0] }}: {{ data[1] }}
+    </p> -->
+
+    <!-- <p>{{ res }}</p> -->
+
+
 
 
   </div>
@@ -26,8 +37,9 @@ export default {
   data() {
     return {
       inputText: 'null',
-      word_meaning: [],
-      part_of_speech: []
+      temp_word_meaning: '',
+      temp_part_of_speech: [],
+      res: []
     };
   },
   methods: {
@@ -39,16 +51,24 @@ export default {
           // this.word_noun = result.data[0].meanings.partOfSpeech;
           // this.word_meaning = result.data[0].meanings.definitions.definition;
           // console.log(result.data[0].meanings);
+          // console.log(result);
 
           for (let i = 0; i < result.data[0].meanings.length; i++) {
-            console.log('Part of Speech: ' + result.data[0].meanings[i].partOfSpeech);
-            this.part_of_speech = result.data[0].meanings[i].partOfSpeech;
-            for (let j = 0; j < result.data[0].meanings[i].definitions.length; j++) {
-              console.log(result.data[0].meanings[i].definitions[j].definition);
-              this.word_meaning = result.data[0].meanings[i].definitions[j].definition;
-            }
+            // console.log('Part of Speech: ' + result.data[0].meanings[i].partOfSpeech);
+            this.temp_part_of_speech = result.data[0].meanings[i].partOfSpeech;
+            // console.log(this.temp_part_of_speech);
 
+            for (let j = 0; j < result.data[0].meanings[i].definitions.length; j++) {
+              // console.log('Meaning: ' + result.data[0].meanings[i].definitions[j].definition);
+              this.temp_word_meaning = result.data[0].meanings[i].definitions[j].definition;
+              // console.log(this.temp_word_meaning);
+              // this.res.push([this.part_of_speech, this.word_meaning])
+            }
           }
+
+          
+
+          // console.log(this.res);
         })
         .catch((err) => {
           console.error('API Error:', err);
