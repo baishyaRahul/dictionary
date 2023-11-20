@@ -1,82 +1,18 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <div id="app">
-
-    <input v-model="inputText" type="text" placeholder="Enter text">
-    <button @click="getData()">Meaning</button>
-    <!-- <p v-if="word_noun">Part of Speech: {{ word_noun }}</p> -->
-    <!-- <p v-for="( meaning, j ) in word_meaning" :key="j">Part of Speech: {{ meaning.definition }}</p> -->
-
-    <!-- <p v-for="( speech, i ) in part_of_speech" :key="i">{{ i + 1 }}</p> -->
-    <p>{{ temp_part_of_speech }}</p>
-    <!-- <p>---------------------------</p> -->
-    <!-- <p v-for="( meaning, i ) in word_meaning" :key="i">{{ i + 1 }}</p> -->
-    <!-- <p>{{ res[0] }}</p> -->
-
-    <!-- <p v-for="( data, i ) in res" :key="i"> 
-      {{ data[0] }}: {{ data[1] }}
-    </p> -->
-
-    <!-- <p>{{ res }}</p> -->
-
-
-
-
-  </div>
+  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <!-- <HelloWorld /> -->
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import axios from 'axios';
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld
-  },
-  data() {
-    return {
-      inputText: 'null',
-      temp_word_meaning: '',
-      temp_part_of_speech: [],
-      res: []
-    };
-  },
-  methods: {
-    getData() {
-      axios
-        .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${this.inputText}`)
-        .then((result) => {
-
-          // this.word_noun = result.data[0].meanings.partOfSpeech;
-          // this.word_meaning = result.data[0].meanings.definitions.definition;
-          // console.log(result.data[0].meanings);
-          // console.log(result);
-
-          for (let i = 0; i < result.data[0].meanings.length; i++) {
-            // console.log('Part of Speech: ' + result.data[0].meanings[i].partOfSpeech);
-            this.temp_part_of_speech = result.data[0].meanings[i].partOfSpeech;
-            // console.log(this.temp_part_of_speech);
-
-            for (let j = 0; j < result.data[0].meanings[i].definitions.length; j++) {
-              // console.log('Meaning: ' + result.data[0].meanings[i].definitions[j].definition);
-              this.temp_word_meaning = result.data[0].meanings[i].definitions[j].definition;
-              // console.log(this.temp_word_meaning);
-              // this.res.push([this.part_of_speech, this.word_meaning])
-            }
-          }
-
-          
-
-          // console.log(this.res);
-        })
-        .catch((err) => {
-          console.error('API Error:', err);
-        });
-    }
+    HelloWorld
   }
-};
-
+}
 </script>
 
 <style>
