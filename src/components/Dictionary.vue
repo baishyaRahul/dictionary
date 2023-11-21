@@ -5,8 +5,8 @@
             <div class="card shadow-sm p-3 mt-5 bg-body rounded">
                 <div class="card-body">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Word" v-model="inputText">
-                        <button class="btn btn-outline-primary" type="button" @click="getData(), visible=!visible">Button</button>
+                        <input type="text" class="form-control" placeholder="Word" v-model="inputText" @keyup="getData(), visible=!visible">
+                        <!-- <button class="btn btn-outline-primary" type="button" >Button</button> -->
                     </div>
                 </div>
             </div>
